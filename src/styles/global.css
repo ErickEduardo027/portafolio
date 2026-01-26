@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Fallback por si el JS tarda 1 frame en setear la altura del header */
+:root {
+  --header-h: 64px;
+
+  /* Theme tokens */
+  --background: #0f172a;
+  --foreground: #e2e8f0;
+  --card: #1e293b;
+  --card-foreground: #e2e8f0;
+  --popover: #1e293b;
+  --popover-foreground: #e2e8f0;
+  --primary: #5eead4;
+  --primary-foreground: #0f172a;
+  --secondary: #1e293b;
+  --secondary-foreground: #e2e8f0;
+  --muted: #334155;
+  --muted-foreground: #94a3b8;
+  --accent: #5eead4;
+  --accent-foreground: #0f172a;
+  --destructive: #ef4444;
+  --destructive-foreground: #fef2f2;
+  --border: #334155;
+  --input: #334155;
+  --ring: #5eead4;
+
+  --radius: 0.5rem;
+
+  /* Sidebar (si lo usas) */
+  --sidebar: #1e293b;
+  --sidebar-foreground: #e2e8f0;
+  --sidebar-primary: #5eead4;
+  --sidebar-primary-foreground: #0f172a;
+  --sidebar-accent: #334155;
+  --sidebar-accent-foreground: #e2e8f0;
+  --sidebar-border: #334155;
+  --sidebar-ring: #5eead4;
+}
+
+/* Base */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .animate-ribbon-ltr,
+  .animate-ribbon-rtl {
+    animation: none !important;
+  }
+}
+
+/* Tailwind base layer helpers */
+@layer base {
+  /* No uses @apply con clases que no existen en Tailwind config */
+  * {
+    border-color: var(--border);
+    outline-color: color-mix(in oklab, var(--ring) 50%, transparent);
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+  }
+}
+
+
+/* ---------- Animaciones ---------- */
+
+@keyframes jump {
+  0%, 100% { transform: translateY(0); }
+  35% { transform: translateY(-6px); }
+  70% { transform: translateY(0); }
+}
+
+/*
+  Ribbon infinito usando variable --ribbon-shift (set desde JS en Stack.tsx)
+  NOTA: NO pausamos al hover.
+*/
+@keyframes ribbon-rtl {
+  from { transform: translateX(0); }
+  to { transform: translateX(calc(-1 * var(--ribbon-shift))); }
+}
+
+@keyframes ribbon-ltr {
+  from { transform: translateX(calc(-1 * var(--ribbon-shift))); }
+  to { transform: translateX(0); }
+}
+
+/* Ajusta velocidad aquí (más alto = más lento) */
+.animate-ribbon-rtl {
+  animation: ribbon-rtl 34s linear infinite;
+  will-change: transform;
+}
+
+.animate-ribbon-ltr {
+  animation: ribbon-ltr 34s linear infinite;
+  will-change: transform;
+}
+
+
+@keyframes caret {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.animate-caret {
+  animation: caret 0.9s step-end infinite;
+}
