@@ -23,10 +23,6 @@ import { Webhook, GitBranch, Database } from "lucide-react";
 
 type IconComp = ComponentType<{ className?: string; size?: number }>;
 
-type TechItem = {
-  name: string;
-  Icon: IconComp;
-};
 
 // Nombres EXACTOS como en src/data/site.ts
 const iconMap: Record<string, IconComp> = {
