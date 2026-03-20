@@ -31,7 +31,7 @@ export const site = {
   links: {
     github: "https://github.com/ErickEduardo027", // <-- pega aquí
     linkedin: "https://www.linkedin.com/in/erick-eduardo-santana-segura-134453314/", // <-- pega aquí
-    cv: "/Curriculum.pdf",
+    cv: "/curriculum.pdf",
   },
 
   about: [
