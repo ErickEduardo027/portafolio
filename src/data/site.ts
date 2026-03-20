@@ -25,7 +25,7 @@ export const site = {
 
   // Datos base (según tu CV)
   email: "erickeduardo027@gmail.com",
-  phone: "829-256-5232",
+  phone: "849-256-5232",
   website: "elerikdev.com",
 
   links: {

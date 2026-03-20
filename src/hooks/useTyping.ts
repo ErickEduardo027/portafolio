@@ -18,7 +18,7 @@ export function useTyping(
   useEffect(() => {
     if (!enabled) return;
 
-    // si reduce motion, muestra todo de una vez
+
     if (reduceMotion) {
       setValue(text);
       return;
